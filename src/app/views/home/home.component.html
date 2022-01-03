@@ -1,0 +1,42 @@
+<h4>Balance Report</h4>
+
+<search-bar (onSearch)="search($event)"></search-bar>
+
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Category</th>
+      <th>Employee</th>
+      <th>Income</th>
+      <th>Expense</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.id}}</td>
+      <td>
+        <!-- Show Detail Page -->
+        <span [routerLink]="['/balance',item.category.type,item.id,'detail']" class="link">
+          {{item.useDate | date:'yyyy-MM-dd'}}
+        </span>
+      </td>
+      <td>{{item.category.type}}</td>
+      <td>{{item.category.name}}</td>
+      <td>{{item.employee}}</td>
+      <td>{{item.category.type === 'Income' ? (item.total | number) : 0 | number}}</td>
+      <td>
+        {{item.category.type === 'Expense' ? (item.total | number) : 0 | number}}
+      </td>
+      <td>
+        <!--Show Edit Page  -->
+        <span [routerLink]="['/balance',item.category.type,item.id]" class="link">
+          {{item.balance | number}}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

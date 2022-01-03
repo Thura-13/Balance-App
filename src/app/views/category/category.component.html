@@ -1,0 +1,60 @@
+<h4><i class="fa fa-tasks"></i> Category Management</h4>
+
+<form [formGroup]="form">
+  <div class="form-row mt-4">
+
+    <select formControlName="type" class="form-selects me-3">
+      <option value="">All Type</option>
+      <option value="Income">Income</option>
+      <option value="Expense">Expense</option>
+    </select>
+
+    <input formControlName="name" type="text" class="form-controls me-4" placeholder="Search Name">
+
+    <button (click)="search()" class="btn btn-outline-primary me-3">
+      <i class="fa fa-search">Search</i>
+    </button>
+
+    <button (click)="addNew()" type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+      data-bs-target="#edit-dialog">
+      <i class="fa fa-plus">Add New</i>
+    </button>
+
+  </div>
+
+  <table class="table table-stribed" *ngIf="list.length">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Deleted</th>
+        <th>
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.type}}</td>
+        <td>
+          <span (click)="switchDeleteStatus(item.id)" class="btn-link">
+            <i class="fa" [class.fa-check]="!item.deleted" [class.fa-close]="item.deleted"></i>
+          </span>
+        </td>
+        <td>
+          <span (click)="edit(item)" data-bs-toggle="modal" data-bs-target="#edit-dialog" class="btn-link">
+            <i class="fa fa-pencil"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <edit-component [data]="target" (onSave)="save($event)"></edit-component>
+  </div>
+
+</form>

@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.line {
+  box-shadow: 0 2px silver;
+}
+
+span {
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu>a {
+  text-decoration: none;
+  padding: 15px 20px;
+  color: gray;
+  display: block;
+}
+
+.menu>a:hover {
+  background-color: silver;
+  color: black;
+}
+
+.menu>a.active {
+  background-color: silver;
+  color: black;
+}

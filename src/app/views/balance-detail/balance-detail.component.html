@@ -1,0 +1,55 @@
+<h4>{{balance?.category.type}} Details</h4>
+
+<!-- Show Balance Data -->
+
+<form action="">
+  <div class="row g-3 align-item-center">
+    <div class="col">
+      <label>Category</label>
+      <span class="form-control">{{balance?.category.name}}</span>
+    </div>
+    <div class="col">
+      <label>Date</label>
+      <span class="form-control">{{balance?.useDate}}</span>
+    </div>
+    <div class="col">
+      <label>Employee</label>
+      <span class="form-control">{{balance?.employee}}</span>
+    </div>
+    <div class="col">
+      <label>Total</label>
+      <span class="form-control">{{balance?.total}}</span>
+    </div>
+  </div>
+  <!-- Show Balance Detail Data -->
+  <div class="card mt-4">
+    <div class="card-header">Detail</div>
+    <div class="card-body" *ngFor="let item of details">
+      <div class="row g-3 align-item-center">
+        <div class="col">
+          <label>Item</label>
+          <span class="form-control">{{item.item}}</span>
+        </div>
+        <div class="col">
+          <label>Remark</label>
+          <span class="form-control">{{item.remark}}</span>
+        </div>
+        <div class="col">
+          <label>Unit</label>
+          <span class="form-control">{{item.unit}}</span>
+        </div>
+        <div class="col">
+          <label>Amount</label>
+          <span class="form-control">{{item.amount}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer d-flex">
+
+      <button [routerLink]="['/home']" class="btn btn-primary ms-auto"><i class="fa fa-pencil"></i>Home</button>
+
+      <button [routerLink]="['/balance',balance?.category.type,balance?.id]" class="btn btn-danger ms-4"><i
+          class="fa fa-pencil"></i>Edit</button>
+    </div>
+  </div>
+</form>
