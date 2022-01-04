@@ -29,7 +29,7 @@ export class SearchBarComponent implements OnChanges {
     })
 
     this.form.get('type')?.valueChanges.subscribe(type => {
-      this.category = type ? service.search({ type: type, deleted: false }) : []
+      this.category = type ? service.search({ type: type, deleted: true }) : []
       this.form.patchValue({ category: '' })
     })
   }

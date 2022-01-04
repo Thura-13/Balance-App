@@ -27,7 +27,12 @@ export class CategoryService extends ListStorage<Category> {
             if (param.name && !cat.name.toLocaleLowerCase().startsWith(param.name.toLocaleLowerCase())) {
                 return false
             }
-            return !param.deleted
+
+            if (param.deleted && param.deleted === cat.deleted) {
+                return false
+            }
+
+            return true
         })
 
     }
@@ -49,7 +54,7 @@ export class CategoryService extends ListStorage<Category> {
 
     delete(id: number) {
         if (this.resource[id]) {
-            const { deleted, ...rest } = this.resource[id]
+            let { deleted, ...rest } = this.resource[id]
             this.resource[id] = { ...rest, deleted: !deleted }
         }
     }

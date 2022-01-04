@@ -53,9 +53,10 @@ export class BalanceEditComponent {
       this.type = param['type']
       const id = Number(param['id'])
 
-      const categorySearch: CategorySearch = { type: this.type as Type }
+      const categorySearch: CategorySearch = { type: this.type as Type, deleted: true }
 
       if (id) {
+
         // Edit
         // Get Balance Data And Detail Data
         const dto = balanceService.findById(id)
@@ -73,7 +74,6 @@ export class BalanceEditComponent {
 
       } else {
         // Add New
-        categorySearch.deleted = false
         this.addDetail()
       }
 
