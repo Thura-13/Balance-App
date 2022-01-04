@@ -23,6 +23,7 @@ export class CategoryComponent {
   }
 
   search() {
+
     this.list = this.service.search(this.form.value)
   }
 
@@ -43,6 +44,7 @@ export class CategoryComponent {
 
   switchDeleteStatus(id: number) {
     this.service.delete(id)
+    this.list = this.service.search(this.form.value)
   }
 
 }
